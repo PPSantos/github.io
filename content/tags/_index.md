@@ -1,5 +1,5 @@
 ---
 title: "Tags"
-description: "Topics covered and methods used in my research papers and courses."
+description: "Tags for Pedro P. Santos website."
 layout: "terms"
 ---

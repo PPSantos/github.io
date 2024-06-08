@@ -65,34 +65,20 @@ params:
               url: posts/
             - name: Articles
               url: https://scholar.google.com/citations?user=mJWH9dEAAAAJ
-            #- name: Courses
-            #  url: courses/
-            #- name: Data
-            #  url: data/
             #- name: Tags
             #  url: tags/
-            #- name: Archive
-            #  url: archive/
-            #- name: Blog
-            #  url: https://en.wikipedia.org/wiki/Moritz-Maria_von_Igelfeld_(character)
 
     socialIcons:
         - name: Email
           url: mailto:pedro.pinto.santos@tecnico.ulisboa.pt
-        #- name: CV
-        #  url: cv.pdf
         - name: Google Scholar
           url: https://scholar.google.com/citations?user=mJWH9dEAAAAJ
-        #- name: Contacts
-        #  url: contacts/
-        #- name: Office Hours
-        #  url: officehours/
         - name: GitHub
           url: https://github.com/PPSantos
-        #- name: YouTube
-        #  url: https://www.youtube.com/@alexandermccallsmithoffici9000
         - name: Twitter
           url: https://twitter.com/ppspedrosantos
+        #- name: CV
+        #  url: cv.pdf
 
     assets:
         disableHLJS: true
