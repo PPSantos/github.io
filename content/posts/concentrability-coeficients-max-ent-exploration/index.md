@@ -214,19 +214,19 @@ In the next subsection, we provide a detailed explanation as to why $\mu^\* = \m
 First, consider a fixed $\mu \in \Delta(\mathcal{S})$. We start by understanding what is the best response for the maximizing player to $\mu$, denoted $\beta^*_\mu$. It holds that
 
 \begin{equation*}
-\phantom{}\mathllap{\beta^*_\mu} = \argmax_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)
+\phantom{}\mathllap{\beta_\mu^\*} = \argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)
 \end{equation*}
 \begin{equation*}
- = \mathrlap{ \argmax_{\beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|_{2,\mu} }\phantom{ \argmax_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) }
+ = \mathrlap{ \argmax\_{\beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu} }\phantom{ \argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) }
 \end{equation*}
 \begin{equation*}
-\stackrel{(a)}{=} \mathrlap{ \argmax_{\beta \in \Delta(\mathcal{S})} ( \beta^\top U \beta )^{1/2} }\phantom{\argmax_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
+\stackrel{(a)}{=} \mathrlap{ \argmax\_{\beta \in \Delta(\mathcal{S})} ( \beta^\top U \beta )^{1/2} }\phantom{\argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
 \end{equation*}
 \begin{equation*}
-\stackrel{(b)}{=} \mathrlap{ \bigg( \argmax_{\beta \in \Delta(\mathcal{S})}  \beta^\top U \beta \bigg)^{1/2}, }\phantom{\argmax_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
+\stackrel{(b)}{=} \mathrlap{ \bigg( \argmax\_{\beta \in \Delta(\mathcal{S})}  \beta^\top U \beta \bigg)^{1/2}, }\phantom{\argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
 \end{equation*}
 
-where in (a) we rewrote the weighted norm, as defined in (3), as the square root of a quadratic form with $U = \text{diag}\Big(\frac{1}{\mu(s_1)}, \ldots, \frac{1}{\mu(s_{|\mathcal{S}|})}\Big)$, and in (b) we noted that the square root function does not change the maximizer as it is monotonically increasing. We are left with understanding what is the solution to the last equation above.
+where in (a) we rewrote the weighted norm, as defined in (3), as the square root of a quadratic form with $U = \text{diag}\Big(\frac{1}{\mu(s_1)}, \ldots, \frac{1}{\mu(s\_{|\mathcal{S}|})}\Big)$, and in (b) we noted that the square root function does not change the maximizer as it is monotonically increasing. We are left with understanding what is the solution to the last equation above.
 
 ---
 
