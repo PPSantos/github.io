@@ -243,7 +243,7 @@ It holds that the quadratic form above is continuous and convex, since $U$ is di
 Now that we know what the best reponse of the adversary player to any $\mu$ looks like, we can go back to our original objective of computing $\mu^\*$. From the perspective of the minimizing player, for any picked $\mu$, the best response of the adversary player will be $\beta_\mu^\*$ as described above, yielding a value of
 
 \begin{equation*}
-    L(\mu, \beta^*_\mu) = ( (\beta_\mu^\*)^\top U \beta_\mu^\* )^{1/2} = \Bigg( \max\_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2},
+    L(\mu, \beta_\mu^\*) = ( (\beta_\mu^\*)^\top U \beta_\mu^\* )^{1/2} = \Bigg( \max\_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2},
 \end{equation*}
 
 where in the second equality above we noted that, since there is only one non-zero entry in $\beta_\mu^\*$ that corresponds to the state $s^\* = \argmax\_{s \in \mathcal{S}}{1 / \mu(s)}$, we have that $(\beta_\mu^\*)^\top U \beta_\mu^\* = 1/ \mu(s^\*)$ and, hence, this is equivalent to taking the maximum value of $1/\mu(s)$ across all states.
@@ -251,7 +251,7 @@ where in the second equality above we noted that, since there is only one non-ze
 Going back to our original objective,
 
 \begin{equation*}
-\phantom{}\mathllap{\mu^*} = \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)
+\phantom{}\mathllap{\mu^\*} = \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)
 \end{equation*}
 \begin{equation*}
  = \mathrlap{ \argmin\_{\mu \in \Delta(\mathcal{S})} L(\mu, \beta_\mu^\*) }\phantom{ \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) }
