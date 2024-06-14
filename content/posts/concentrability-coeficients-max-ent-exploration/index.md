@@ -163,7 +163,7 @@ The intuition behind the two-player game above is as follows: first, the minimiz
 #### Note) Computing the optimal data distribution
 
 <span style="color:gray">
-We refer to Sec. 3.2 of our article where we propose a gradient descent-based algorithm to solve the two-player game above. In summary, we exploit the fact that $\max_\Pi C(\mu, \Pi)$ is convex with respect to $\mu$ and employ a gradient descent-based update scheme that, combined with a projection step to keep iterates $\mu_t$ inside the probability simplex, iteratively updates $\mu_t$ such that we approximate $\mu^\*$.
+We refer to Sec. 3.2 of our article where we propose a gradient descent-based algorithm to solve the two-player game above. In summary, we exploit the fact that $\max_\Pi C(\mu, \Pi)$ is convex with respect to $\mu$ and employ a gradient descent-based update scheme that, combined with a projection step to keep iterates $\mu_t$ inside the probability simplex, iteratively updates $\mu_t$ such that we approximate $\mu^*$.
 </span>
 
 ---
@@ -205,7 +205,7 @@ where $L(\mu, \beta) = || \beta / \mu ||\_{2,\mu}$. Again, we can interpret the 
 + the minimizing player aims to select $\mu$ so that $L(\mu, \beta)$ is minimized.
 + the maximizing (adversary) player aims to select $\beta$ so that $L(\mu, \beta)$ is maximized.
 
-It turns out that the problem above has a closed-form solution and $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$, where $\mathcal{U}\_{|\mathcal{S}|}$ denotes the uniform distribution over $\mathcal{S}$, equivalent to the maximum entropy distribution. The intuition behind such result is that, for any $\mu$ picked by the minimizing player, the best response for the maximizing player, $\beta^\*_\mu$, is to pick $\beta$ such that all probability mass concentrates in the most underrepresented state in $\mu$. When the maximizing player chooses $\beta^\*_\mu$, it yields a value $L(\mu, \beta^\*_\mu)$ to the minimizing player that grows as the probability of the most underrepresented state in $\mu$ decreases. Hence, the optimal strategy for the minimizing player is to pick $\mu = \mathcal{U}\_{|\mathcal{S}|}$. Because of this, we say that the maximum entropy distribution is minimax optimal in the face of uncertainty regarding the underlying MDP.
+It turns out that the problem above has a closed-form solution and $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$, where $\mathcal{U}\_{|\mathcal{S}|}$ denotes the uniform distribution over $\mathcal{S}$, equivalent to the maximum entropy distribution. The intuition behind such result is that, for any $\mu$ picked by the minimizing player, the best response for the maximizing player, $\beta^*_\mu$, is to pick $\beta$ such that all probability mass concentrates in the most underrepresented state in $\mu$. When the maximizing player chooses $\beta_\mu^*$, it yields a value $L(\mu, \beta^*_\mu)$ to the minimizing player that grows as the probability of the most underrepresented state in $\mu$ decreases. Hence, the optimal strategy for the minimizing player is to pick $\mu = \mathcal{U}\_{|\mathcal{S}|}$. Because of this, we say that the maximum entropy distribution is minimax optimal in the face of uncertainty regarding the underlying MDP.
 
 In the next subsection, we provide a detailed explanation as to why $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$ for the problem above. If you find such result is intuitive and are in a rush, you can [skip to the next section where we elaborate on how our analysis can extend to the online setting.](#5-from-optimal-offline-distributions-to-exploratory-policies)
 
