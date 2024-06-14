@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Pedro P. Santos</title>
-    <link>https://ppsantos.github.io/</link>
-    <description>Recent content on Pedro P. Santos</description>
+    <title>q-learning on Pedro P. Santos</title>
+    <link>https://ppsantos.github.io/tags/q-learning/</link>
+    <description>Recent content in q-learning on Pedro P. Santos</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ppsantos.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ppsantos.github.io/tags/q-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From concentrability coefficients to maximum state entropy exploration</title>
       <link>https://ppsantos.github.io/posts/concentrability-coeficients-max-ent-exploration/</link>
@@ -13,15 +13,6 @@
       
       <guid>https://ppsantos.github.io/posts/concentrability-coeficients-max-ent-exploration/</guid>
       <description>We provide an intuitive explanation as to why maximum entropy data distributions are minimax optimal for approximate value-iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.</description>
-    </item>
-    
-    <item>
-      <title>Contacts</title>
-      <link>https://ppsantos.github.io/contacts/</link>
-      <pubDate>Sat, 08 Jun 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://ppsantos.github.io/contacts/</guid>
-      <description>Pedro P. Santos office address at Instituto Superior Técnico.</description>
     </item>
     
   </channel>

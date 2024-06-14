@@ -54,7 +54,7 @@ params:
           enabled: true
           title: Pedro P. Santos
           subtitle: "I am a PhD student in Computer Science and Engineering at Instituto Superior Técnico, University of Lisbon, and an early stage researcher at GAIPS, INESC-ID. I am supervised by Prof. Francisco S. Melo and Prof. Alberto Sardinha. My research addresses problems in decision-making and machine learning, particularly in planning and learning under uncertainty. I am particularly interested in the theoretical foundations of sequential decision-making. I got my MSc degree in Computer Science and Engineering from Instituto Superior Técnico in 2021."
-          imageUrl: "tagus_edited_darktable.jpg"
+          imageUrl: "tagus_darktable_edit_500x500.jpg"
           imageWidth: 160
           imageHeight: 160
           imageTitle: Pedro P. Santos
