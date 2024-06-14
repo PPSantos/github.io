@@ -279,12 +279,12 @@ and, hence, $\mu^\* = \mathcal{U}$.
 
 As previously discussed, in general, the set of expected frequencies of visitation of states induced by all policies is a subset of $\Delta(\mathcal{S})$ because the agent is restricted by the dynamics of the MDP when interacting with the environment. Let us denote with $\mathcal{D}$ the set of expected frequencies of visitation of states induced by all policies for a given MDP. Also, let $d_\pi \in \mathcal{D}$ denote the expected frequency of visitation of states associated with a given policy $\pi$. It should be clear that, in general, $\mathcal{D} \subset \Delta(\mathcal{S})$, as we illustrate in the figure below for the case of an MDP with $\mathcal{S}=(s_1,s_2,s_3)$.
 
-If the underlying MDP is unknown, we showed in the previous section that the maximum entropy distribution over the state space, $\mathcal{U}_{|\mathcal{S}|}$, is minimax optimal from the point of view of concentrability. We illustrate such distribution with a star in the figure below. Since, in general, the maximum entropy distribution may not be contained in \$\mathcal{D}\$, our result does not directly extend to the online case because it may not exist a policy that induces a uniform probability of visitation over all states.
+If the underlying MDP is unknown, we showed in the previous section that the maximum entropy distribution over the state space, $\mathcal{U}\_{|\mathcal{S}|}$, is minimax optimal from the point of view of concentrability. We illustrate such distribution with a star in the figure below. Since, in general, the maximum entropy distribution may not be contained in \$\mathcal{D}\$, our result does not directly extend to the online case because it may not exist a policy that induces a uniform probability of visitation over all states.
 
-Thus, one could try to find a policy $\pi^*$, associated with a given $d_{\pi^*}$, such that 
+Thus, one could try to find a policy $\pi^*$, associated with a given $d_{\pi^\*}$, such that 
 
 \begin{equation*}
-    \pi^* = \argmin_{\pi} \text{KL}(d_\pi \hspace*{0.05cm} || \hspace*{0.05cm} \mathcal{U}_{|\mathcal{S}|}),
+    \pi^* = \argmin\_{\pi} \text{KL}(d_\pi \hspace*{0.05cm} || \hspace*{0.05cm} \mathcal{U}\_{|\mathcal{S}|}),
 \end{equation*}
 
 where $\text{KL}$ denotes the KL-divergence. Essentially, we are projecting our minimax solution, $\mathcal{U}\_{|\mathcal{S}|}$, onto set $\mathcal{D}$, as we illustrate in the figure below with the dashed line. We denote the result of this projection step with point $d_{\pi^*}$ in the figure below.
@@ -302,22 +302,22 @@ where $\text{KL}$ denotes the KL-divergence. Essentially, we are projecting our 
 However, we note that
 
 \begin{equation*}
-\phantom{}\mathllap{\text{KL}(d_\pi \hspace*{0.05cm} || \hspace*{0.05cm} \mathcal{U}_{|\mathcal{S}|})} = \sum_{s \in \mathcal{S}} d_\pi(s) \log\Bigg(\frac{d_\pi(s)}{1/|\mathcal{S}|}\Bigg)
+\phantom{}\mathllap{\text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}\_{|\mathcal{S}|})} = \sum\_{s \in \mathcal{S}} d_\pi(s) \log\Bigg(\frac{d_\pi(s)}{1/|\mathcal{S}|}\Bigg)
 \end{equation*}
 \begin{equation*}
-= \mathrlap{\sum_{s \in \mathcal{S}} d_\pi(s) \Big( \log |\mathcal{S}| + \log d_\pi(s) \Big)}\phantom{\sum_{s \in \mathcal{S}} d_\pi(s) \log\Bigg(\frac{d_\pi(s)}{1/|\mathcal{S}|}\Bigg)}
+= \mathrlap{\sum\_{s \in \mathcal{S}} d_\pi(s) \Big( \log |\mathcal{S}| + \log d_\pi(s) \Big)}\phantom{\sum\_{s \in \mathcal{S}} d_\pi(s) \log\Bigg(\frac{d_\pi(s)}{1/|\mathcal{S}|}\Bigg)}
 \end{equation*}
 \begin{equation*}
-= \mathrlap{\log |\mathcal{S}| - \mathcal{H}(d_\pi),}\phantom{\sum_{s \in \mathcal{S}} d_\pi(s) \log\Bigg(\frac{d_\pi(s)}{1/|\mathcal{S}|}\Bigg)}
+= \mathrlap{\log |\mathcal{S}| - \mathcal{H}(d_\pi),}\phantom{\sum\_{s \in \mathcal{S}} d_\pi(s) \log\Bigg(\frac{d_\pi(s)}{1/|\mathcal{S}|}\Bigg)}
 \end{equation*}
 
 where $\mathcal{H}(d_\pi)$ denotes the entropy of distribution $d_\pi$. Looking at the equation above, we can see that minimizing the KL-divergence to $\mathcal{U}\_{|\mathcal{S}|}$ is equivalent to maximizing $\mathcal{H}(d_\pi)$ since $\log|\mathcal{S}|$ is constant. Hence,
 
 \begin{equation*}
-\phantom{}\mathllap{\pi^*} = \argmin_{\pi} \text{KL}(d_\pi \hspace*{0.05cm} || \hspace*{0.05cm} \mathcal{U}_{|\mathcal{S}|})
+\phantom{}\mathllap{\pi^*} = \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}_{|\mathcal{S}|})
 \end{equation*}
 \begin{equation*}
- = \mathrlap{ \argmax_{\pi} \mathcal{H}(d_\pi), }\phantom{ \argmin_{\pi} \text{KL}(d_\pi \hspace*{0.05cm} || \hspace*{0.05cm} \mathcal{U}_{|\mathcal{S}|}) }
+ = \mathrlap{ \argmax\_{\pi} \mathcal{H}(d_\pi), }\phantom{ \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}_{|\mathcal{S}|}) }
 \end{equation*}
 
 where the last objective above is precisely that of maximum entropy state exploration, i.e., finding a policy that induces an expected frequency of visitation of states with the highest entropy possible.[^2]
