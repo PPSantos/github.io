@@ -314,10 +314,10 @@ However, we note that
 where $\mathcal{H}(d_\pi)$ denotes the entropy of distribution $d_\pi$. Looking at the equation above, we can see that minimizing the KL-divergence to $\mathcal{U}\_{|\mathcal{S}|}$ is equivalent to maximizing $\mathcal{H}(d_\pi)$ since $\log|\mathcal{S}|$ is constant. Hence,
 
 \begin{equation*}
-\phantom{}\mathllap{\pi^\*} = \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}_{|\mathcal{S}|})
+\phantom{}\mathllap{\pi^\*} = \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}\_{|\mathcal{S}|})
 \end{equation*}
 \begin{equation*}
- = \mathrlap{ \argmax\_{\pi} \mathcal{H}(d_\pi), }\phantom{ \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}_{|\mathcal{S}|}) }
+ = \mathrlap{ \argmax\_{\pi} \mathcal{H}(d_\pi), }\phantom{ \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}\_{|\mathcal{S}|}) }
 \end{equation*}
 
 where the last objective above is precisely that of maximum entropy state exploration, i.e., finding a policy that induces an expected frequency of visitation of states with the highest entropy possible.[^2]
