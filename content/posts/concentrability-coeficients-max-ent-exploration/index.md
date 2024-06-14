@@ -149,7 +149,7 @@ As can be seen above, $C(\mu)$ can be interpreted as a best response of an adver
 We now formulate the problem of finding the optimal data distribution from the point of view of concentrability as
 
 \begin{equation*}
-    \mu^* = \argmin_{\mu \in \Delta(\mathcal{S})} \max_\Pi C(\mu, \Pi).
+    \mu^* = \argmin\_{\mu \in \Delta(\mathcal{S})} \max_\Pi C(\mu, \Pi).
 \end{equation*}
 
 As seen, the problem above can be interpreted as a two-player game where:
@@ -163,7 +163,7 @@ The intuition behind the two-player game above is as follows: first, the minimiz
 #### Note) Computing the optimal data distribution
 
 <span style="color:gray">
-We refer to Sec. 3.2 of our article where we propose a gradient descent-based algorithm to solve the two-player game above. In summary, we exploit the fact that $\max_\Pi C(\mu, \Pi)$ is convex with respect to $\mu$ and employ a gradient descent-based update scheme that, combined with a projection step to keep iterates $\mu_t$ inside the probability simplex, iteratively updates $\mu_t$ such that we approximate $\mu^*$.
+We refer to Sec. 3.2 of our article where we propose a gradient descent-based algorithm to solve the two-player game above. In summary, we exploit the fact that $\max_\Pi C(\mu, \Pi)$ is convex with respect to $\mu$ and employ a gradient descent-based update scheme that, combined with a projection step to keep iterates $\mu_t$ inside the probability simplex, iteratively updates $\mu_t$ such that we approximate $\mu^\*$.
 </span>
 
 ---
@@ -176,21 +176,21 @@ As previously discussed, to compute the optimal data distribution as described b
 If we do not know the initial states distribution, $\rho$, and the transition probability function, $p$, we cannot compute coefficients $c(m, \mu)$ as defined in (2). Hence, we introduce coefficients $\tilde{c}(m, \mu)$, which redefine $c(m, \mu)$ by considering the worst case over all possible distributions $\tilde{\rho} \in \Delta(\mathcal{S})$ and transition probability functions $\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|}$. Precisely, let 
 
 \begin{equation*}
-\tilde{c}(m, \mu) = \max_{\tilde{\rho} \in \Delta(\mathcal{S}) } \max_{\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|} } \max_{\pi_1, \ldots, \pi_m}  \bigg|\bigg| \frac{\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_{m}}}{\mu} \bigg|\bigg|_{2,\mu},
+\tilde{c}(m, \mu) = \max\_{\tilde{\rho} \in \Delta(\mathcal{S}) } \max\_{\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|} } \max\_{\pi_1, \ldots, \pi_m}  \bigg|\bigg| \frac{\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}}{\mu} \bigg|\bigg|\_{2,\mu},
 \end{equation*}
 
 where $\tilde{P}^\pi$ denotes the expected transition probability function for policy $\pi$ under an MDP with transition probability function $\tilde{p}$. 
 
-It should be clear that, by considering all possible $\tilde{\rho}$'s, $\tilde{p}$'s and policies ($\pi_1, \ldots, \pi_m$), the set of possible distributions $\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_{m}}$ is $\Delta(\mathcal{S})$, for all $m \in \mathbb{N}$. Thus,
+It should be clear that, by considering all possible $\tilde{\rho}$'s, $\tilde{p}$'s and policies ($\pi_1, \ldots, \pi_m$), the set of possible distributions $\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}$ is $\Delta(\mathcal{S})$, for all $m \in \mathbb{N}$. Thus,
 
 \begin{equation*}
-\tilde{c}(m, \mu) = \max_{ \beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|_{2,\mu},
+\tilde{c}(m, \mu) = \max\_{ \beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu},
 \end{equation*}
 
 for all $m \in \mathbb{N}$. If we insert the equation above in (1) it yields 
 
 \begin{equation*}
-\tilde{C}(\mu) = \max_{ \beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|_{2,\mu},
+\tilde{C}(\mu) = \max\_{ \beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu},
 \end{equation*}
 
 since coefficients $\tilde{c}(m, \mu)$ are now independent of the summation index $m$.
@@ -198,16 +198,16 @@ since coefficients $\tilde{c}(m, \mu)$ are now independent of the summation inde
 Thus, in this setting, the problem of finding the optimal data distribution becomes 
 
 \begin{equation*}
-    \mu^* = \argmin_{\mu \in \Delta(\mathcal{S})} \tilde{C}(\mu) = \argmin_{\mu \in \Delta(\mathcal{S})} \max_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta),
+    \mu^* = \argmin\_{\mu \in \Delta(\mathcal{S})} \tilde{C}(\mu) = \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta),
 \end{equation*}
 
-where $L(\mu, \beta) = || \beta / \mu ||_{2,\mu}$. Again, we can interpret the problem above as a two-player game where:
+where $L(\mu, \beta) = || \beta / \mu ||\_{2,\mu}$. Again, we can interpret the problem above as a two-player game where:
 + the minimizing player aims to select $\mu$ so that $L(\mu, \beta)$ is minimized.
 + the maximizing (adversary) player aims to select $\beta$ so that $L(\mu, \beta)$ is maximized.
 
-It turns out that the problem above has a closed-form solution and \$\mu^* = \mathcal{U}_{|\mathcal{S}|}\$, where $\mathcal{U}_{|\mathcal{S}|}$ denotes the uniform distribution over $\mathcal{S}$, equivalent to the maximum entropy distribution. The intuition behind such result is that, for any $\mu$ picked by the minimizing player, the best response for the maximizing player, $\beta^*_\mu$, is to pick $\beta$ such that all probability mass concentrates in the most underrepresented state in $\mu$. When the maximizing player chooses $\beta^*_\mu$, it yields a value $L(\mu, \beta^*_\mu)$ to the minimizing player that grows as the probability of the most underrepresented state in $\mu$ decreases. Hence, the optimal strategy for the minimizing player is to pick $\mu = \mathcal{U}_{|\mathcal{S}|}$. Because of this, we say that the maximum entropy distribution is minimax optimal in the face of uncertainty regarding the underlying MDP.
+It turns out that the problem above has a closed-form solution and $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$, where $\mathcal{U}\_{|\mathcal{S}|}$ denotes the uniform distribution over $\mathcal{S}$, equivalent to the maximum entropy distribution. The intuition behind such result is that, for any $\mu$ picked by the minimizing player, the best response for the maximizing player, $\beta^\*_\mu$, is to pick $\beta$ such that all probability mass concentrates in the most underrepresented state in $\mu$. When the maximizing player chooses $\beta^\*_\mu$, it yields a value $L(\mu, \beta^\*_\mu)$ to the minimizing player that grows as the probability of the most underrepresented state in $\mu$ decreases. Hence, the optimal strategy for the minimizing player is to pick $\mu = \mathcal{U}\_{|\mathcal{S}|}$. Because of this, we say that the maximum entropy distribution is minimax optimal in the face of uncertainty regarding the underlying MDP.
 
-In the next subsection, we provide a detailed explanation as to why \$\mu^* = \mathcal{U}_{|\mathcal{S}|}\$ for the problem above. If you find such result is intuitive and are in a rush, you can [skip to the next section where we elaborate on how our analysis can extend to the online setting.](#5-from-optimal-offline-distributions-to-exploratory-policies)
+In the next subsection, we provide a detailed explanation as to why $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$ for the problem above. If you find such result is intuitive and are in a rush, you can [skip to the next section where we elaborate on how our analysis can extend to the online setting.](#5-from-optimal-offline-distributions-to-exploratory-policies)
 
 ### The maximum entropy distribution is minimax optimal 
 
