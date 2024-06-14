@@ -88,7 +88,7 @@ c(m, \mu) = \max_{\pi_1, \ldots, \pi_m}  \bigg|\bigg| \frac{\rho P^{\pi_1} P^{\p
 where $\gamma \in [0,1)$ is the discount factor, $\rho \in \Delta(\mathcal{S})$ is the distribution of initial states, $P^\pi$ denotes the expected transition probability function given policy $\pi$, and
 
 \begin{equation}
-\bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|_{2,\mu} = \Bigg( \sum_{s \in \mathcal{S}} \mu(s) \big( \beta(s) / \mu(s) \big)^2 \Bigg)^{1/2}.
+\bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu} = \Bigg( \sum_{s \in \mathcal{S}} \mu(s) \big( \beta(s) / \mu(s) \big)^2 \Bigg)^{1/2}.
 \end{equation}
 
 ---
