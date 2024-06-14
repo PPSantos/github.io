@@ -238,7 +238,7 @@ Any function that is convex and continuous, and defined on a set that is convex 
 
 ---
 
-It holds that the quadratic form above is continuous and convex, since $U$ is diagonal and all entries are non-negative. Also, $\Delta(\mathcal{S})$, the probability simplex over the state-space, is compact and convex. Thus, given Bauer's maximum principle, we know that the solution to the optimization problem above lies on one of the extreme points of $\Delta(\mathcal{S})$, i.e., $\beta^*_\mu$ consists of a vector of zeros except for a single entry that has a value of one. It should also be clear that, since we want to maximize the expression above, the best response satisfies $\beta^*_\mu(s) = 1$, if $s = \argmax_{s \in \mathcal{S}}{1 / \mu(s)}$, and zero otherwise. Intuitively, the optimal response for the adversary is to put all probability mass in the state $s$ for which $1/\mu(s)$ is the highest (equivalent to putting all probability mass in the most underrepresented state in $\mu$). 
+It holds that the quadratic form above is continuous and convex, since $U$ is diagonal and all entries are non-negative. Also, $\Delta(\mathcal{S})$, the probability simplex over the state-space, is compact and convex. Thus, given Bauer's maximum principle, we know that the solution to the optimization problem above lies on one of the extreme points of $\Delta(\mathcal{S})$, i.e., $\beta_\mu^\*$ consists of a vector of zeros except for a single entry that has a value of one. It should also be clear that, since we want to maximize the expression above, the best response satisfies $\beta_\mu^\*(s) = 1$, if $s = \argmax\_{s \in \mathcal{S}}{1 / \mu(s)}$, and zero otherwise. Intuitively, the optimal response for the adversary is to put all probability mass in the state $s$ for which $1/\mu(s)$ is the highest (equivalent to putting all probability mass in the most underrepresented state in $\mu$). 
 
 Now that we know what the best reponse of the adversary player to any $\mu$ looks like, we can go back to our original objective of computing \$\mu^*\$. From the perspective of the minimizing player, for any picked $\mu$, the best response of the adversary player will be $\beta^*_\mu$ as described above, yielding a value of
 
@@ -246,7 +246,7 @@ Now that we know what the best reponse of the adversary player to any $\mu$ look
     L(\mu, \beta^*_\mu) = ( (\beta^{*}_\mu)^\top U \beta^{*}_\mu )^{1/2} = \Bigg( \max_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2},
 \end{equation*}
 
-where in the second equality above we noted that, since there is only one non-zero entry in $\beta^*_\mu$ that corresponds to the state $s^* = \argmax_{s \in \mathcal{S}}{1 / \mu(s)}$, we have that $(\beta^{*}_\mu)^\top U \beta^{*}_\mu = 1/ \mu(s^*)$ and, hence, this is equivalent to taking the maximum value of $1/\mu(s)$ across all states.
+where in the second equality above we noted that, since there is only one non-zero entry in $\beta_\mu^\*$ that corresponds to the state $s^\* = \argmax\_{s \in \mathcal{S}}{1 / \mu(s)}$, we have that $(\beta_\mu^\*)^\top U \beta_\mu^\* = 1/ \mu(s^\*)$ and, hence, this is equivalent to taking the maximum value of $1/\mu(s)$ across all states.
 
 Going back to our original objective,
 
