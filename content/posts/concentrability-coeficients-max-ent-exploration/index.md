@@ -51,7 +51,7 @@ We denote with $\Delta(\mathcal{X})$ the set of probability distributions over s
 
 ## 1) Approximate value iteration algorithms
 
-Approximate value iteration (AVI) algorithms aim to approximate \$V^*\$ or \$Q^*\$ using a function $f \in \mathcal{F}$, where $\mathcal{F}$ is the class of functions enconding the representable value or action-value functions. In practice, $\mathcal{F}$ can correspond to the space of functions induced by linear approximators or neural networks. Several well-known reinforcement learning (RL) algorithms such as fitted Q-iteration or deep $Q$-network can be seen as particular instances of AVI algorithms.
+Approximate value iteration (AVI) algorithms aim to approximate $V^*$ or $Q^*$ using a function $f \in \mathcal{F}$, where $\mathcal{F}$ is the class of functions enconding the representable value or action-value functions. In practice, $\mathcal{F}$ can correspond to the space of functions induced by linear approximators or neural networks. Several well-known reinforcement learning (RL) algorithms such as fitted Q-iteration or deep $Q$-network can be seen as particular instances of AVI algorithms.
 
 Below, we provide a very simplified pseudocode for an AVI algorithm, where we ommited the details regarding the update of the function approximator since they are irrelevant for our discussion.
 
