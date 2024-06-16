@@ -195,22 +195,13 @@ In the next subsection, we provide a detailed explanation as to why $\mu^\star =
 
 ### The maximum entropy distribution is minimax optimal 
 
-First, consider a fixed $\mu \in \Delta(\mathcal{S})$. We start by understanding what is the best response for the maximizing player to $\mu$, denoted $\beta^*_\mu$. It holds that
+First, consider a fixed $\mu \in \Delta(\mathcal{S})$. We start by understanding what is the best response for the maximizing player to $\mu$, denoted $\beta_\mu^\star$. It holds that
 
-\begin{equation*}
-\phantom{}\mathllap{\beta_\mu^\*} = \argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)
-\end{equation*}
-\begin{equation*}
- = \mathrlap{ \argmax\_{\beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu} }\phantom{ \argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) }
-\end{equation*}
-\begin{equation*}
-\stackrel{(a)}{=} \mathrlap{ \argmax\_{\beta \in \Delta(\mathcal{S})} ( \beta^\top U \beta )^{1/2} }\phantom{\argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
-\end{equation*}
-\begin{equation*}
-\stackrel{(b)}{=} \mathrlap{ \bigg( \argmax\_{\beta \in \Delta(\mathcal{S})}  \beta^\top U \beta \bigg)^{1/2}, }\phantom{\argmax\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
-\end{equation*}
+<div>$$\begin{align*}
+\beta_\mu^\star &= \argmax_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) \\ &= \argmax_{\beta \in \Delta(\mathcal{S})} \bigg\rVert \frac{\beta}{\mu} \bigg\rVert_{2,\mu} \\ &\stackrel{(a)}{=} \argmax_{\beta \in \Delta(\mathcal{S})} ( \beta^\top U \beta )^{1/2}\\ &\stackrel{(b)}{=} \bigg( \argmax_{\beta \in \Delta(\mathcal{S})} \beta^\top U \beta \bigg)^{1/2},
+\end{align*}$$</div>
 
-where in (a) we rewrote the weighted norm, as defined in (3), as the square root of a quadratic form with $U = \text{diag}\Big(\frac{1}{\mu(s_1)}, \ldots, \frac{1}{\mu(s\_{|\mathcal{S}|})}\Big)$, and in (b) we noted that the square root function does not change the maximizer as it is monotonically increasing. We are left with understanding what is the solution to the last equation above.
+where in (a) we rewrote the weighted norm as the square root of a quadratic form with $U = \text{diag}\Big(\frac{1}{\mu(s_1)}, \ldots, \frac{1}{\mu(s_{|\mathcal{S}|})}\Big)$, and in (b) we noted that the square root function does not change the maximizer as it is monotonically increasing. We are left with understanding what is the solution to the last equation above.
 
 ---
 
@@ -222,41 +213,33 @@ Any function that is convex and continuous, and defined on a set that is convex 
 
 ---
 
-It holds that the quadratic form above is continuous and convex, since $U$ is diagonal and all entries are non-negative. Also, $\Delta(\mathcal{S})$, the probability simplex over the state-space, is compact and convex. Thus, given Bauer's maximum principle, we know that the solution to the optimization problem above lies on one of the extreme points of $\Delta(\mathcal{S})$, i.e., $\beta_\mu^\*$ consists of a vector of zeros except for a single entry that has a value of one. It should also be clear that, since we want to maximize the expression above, the best response satisfies $\beta_\mu^\*(s) = 1$, if $s = \argmax\_{s \in \mathcal{S}}{1 / \mu(s)}$, and zero otherwise. Intuitively, the optimal response for the adversary is to put all probability mass in the state $s$ for which $1/\mu(s)$ is the highest (equivalent to putting all probability mass in the most underrepresented state in $\mu$). 
+It holds that the quadratic form above is continuous and convex, since $U$ is diagonal and all entries are non-negative. Also, $\Delta(\mathcal{S})$, the probability simplex over the state-space, is compact and convex. Thus, given Bauer's maximum principle, we know that the solution to the optimization problem above lies on one of the extreme points of $\Delta(\mathcal{S})$, i.e., $\beta_\mu^\star$ consists of a vector of zeros except for a single entry that has a value of one. It should also be clear that, since we want to maximize the expression above, the best response satisfies $\beta_\mu^\star(s) = 1$, if $s = \argmax_{s \in \mathcal{S}}{1 / \mu(s)}$, and zero otherwise. Intuitively, the optimal response for the adversary is to put all probability mass in the state $s$ for which $1/\mu(s)$ is the highest (equivalent to putting all probability mass in the most underrepresented state in $\mu$). 
 
-Now that we know what the best reponse of the adversary player to any $\mu$ looks like, we can go back to our original objective of computing $\mu^\*$. From the perspective of the minimizing player, for any picked $\mu$, the best response of the adversary player will be $\beta_\mu^\*$ as described above, yielding a value of
+Now that we know what the best reponse of the adversary player to any $\mu$ looks like, we can go back to our original objective of computing $\mu^\star$. From the perspective of the minimizing player, for any picked $\mu$, the best response of the adversary player will be $\beta_\mu^\star$ as described above, yielding a value of
 
-\begin{equation*}
-    L(\mu, \beta_\mu^\*) = ( (\beta_\mu^\*)^\top U \beta_\mu^\* )^{1/2} = \Bigg( \max\_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2},
-\end{equation*}
+<div>$$\begin{align*}
+L(\mu, \beta_\mu^\star) &= ( (\beta_\mu^\star)^\top U \beta_\mu^\star )^{1/2} \\ &= \Bigg( \max_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2},
+\end{align*}$$</div>
 
-where in the second equality above we noted that, since there is only one non-zero entry in $\beta_\mu^\*$ that corresponds to the state $s^\* = \argmax\_{s \in \mathcal{S}}{1 / \mu(s)}$, we have that $(\beta_\mu^\*)^\top U \beta_\mu^\* = 1/ \mu(s^\*)$ and, hence, this is equivalent to taking the maximum value of $1/\mu(s)$ across all states.
+where in the second equality above we noted that, since there is only one non-zero entry in $\beta_\mu^\star$ that corresponds to the state $s^\star = \argmax_{s \in \mathcal{S}}{1 / \mu(s)}$, we have that $(\beta_\mu^\star)^\top U \beta_\mu^\star = 1/ \mu(s^\star)$ and, hence, this is equivalent to taking the maximum value of $1/\mu(s)$ across all states.
 
 Going back to our original objective,
 
-\begin{equation*}
-\phantom{}\mathllap{\mu^\*} = \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)
-\end{equation*}
-\begin{equation*}
- = \mathrlap{ \argmin\_{\mu \in \Delta(\mathcal{S})} L(\mu, \beta_\mu^\*) }\phantom{ \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) }
-\end{equation*}
-\begin{equation*}
-= \mathrlap{ \argmin\_{\mu \in \Delta(\mathcal{S})} \Bigg( \max\_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2}. }\phantom{\argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta)}
-\end{equation*}
+<div>$$\begin{align*}
+\beta_\mu^\star &= \argmin_{\mu \in \Delta(\mathcal{S})} \max_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta) \\ &= \argmin_{\mu \in \Delta(\mathcal{S})} L(\mu, \beta_\mu^\star) \\ &= \argmin_{\mu \in \Delta(\mathcal{S})} \Bigg( \max_{s \in \mathcal{S}} \frac{1}{\mu(s)}\Bigg)^{1/2}.
+\end{align*}$$</div>
 
-Finally, note that if $\mu = \mathcal{U}\_{|\mathcal{S}|}$ we have that
+Finally, note that if $\mu = \mathcal{U}$ we have that
 
-\begin{equation*}
-    \Bigg(\max\_{s \in \mathcal{S}} \frac{1}{\mu(s)} \Bigg)^{1/2} = |\mathcal{S}|^{1/2}.
-\end{equation*}
+<div>$$\Bigg(\max_{s \in \mathcal{S}} \frac{1}{\mu(s)} \Bigg)^{1/2} = |\mathcal{S}|^{1/2}.$$</div>
 
-For any $\mu' \neq \mathcal{U}\_{|\mathcal{S}|}$, at least one state $s$ satisfies \$\mu'(s) < 1 / |\mathcal{S}|$, implying that 
+For any $\mu' \neq \mathcal{U}$, at least one state $s$ satisfies \$\mu'(s) < 1 / |\mathcal{S}|$, implying that 
 
 \begin{equation*}
     \Bigg(\max_{s \in \mathcal{S}} \frac{1}{\mu'(s)} \Bigg)^{1/2} > |\mathcal{S}|^{1/2},
 \end{equation*}
 
-and, hence, $\mu^\* = \mathcal{U}$.
+and, hence, $\mu^\star = \mathcal{U}$.
 
 
 ## 5) From optimal offline distributions to exploratory policies
