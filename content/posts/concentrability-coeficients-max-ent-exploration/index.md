@@ -167,11 +167,11 @@ As previously discussed, to compute the optimal data distribution as described b
 If we do not know the initial states distribution, $\rho$, and the transition probability function, $p$, we cannot compute $C(\mu)$. Hence, we introduce
 
 <div>$$\tilde{C}(\mu) = (1-\gamma)^2 \sum_{m=0}^\infty m \gamma^{m-1} \tilde{c}(m, \mu)$$</div>
-<div>$$\tilde{c}(m, \mu) = \max_{\tilde{\rho}, \hspace{0.05cm} \tilde{p} } \max_{\pi_1, \ldots, \pi_m}  \bigg\lVert \frac{\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}}{\mu} \bigg\rVert_{2,\mu},$$</div>
+<div>$$\tilde{c}(m, \mu) = \max_{\tilde{\rho}, \hspace{0.03cm} \tilde{p}, \pi_1, \ldots, \pi_m } \bigg\lVert \frac{\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}}{\mu} \bigg\rVert_{2,\mu},$$</div>
 
-where the outer maximization in the equation above is performed across all possible distributions $\tilde{\rho} \in \Delta(\mathcal{S})$ and transition probability functions $\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|}$, and $\tilde{P}^\pi$ denotes the expected transition probability function for policy $\pi$ under an MDP with transition probability function $\tilde{p}$. As can be seen, one does not need to know $\rho$ nor $p$ to compute $\tilde{C}(\mu)$ since we are taking the worst case across all possible distributions of initial states and transition probability functions.
+where the maximization above is taken over $\tilde{\rho} \in \Delta(\mathcal{S})$ and $\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|}$, as well as policies over the policies $(\pi_1, \ldots, \pi_m)$, and $\tilde{P}^\pi$ denotes the expected transition probability function for policy $\pi$ under an MDP with transition probability function $\tilde{p}$. As can be seen, one does not need to know $\rho$ nor $p$ to compute $\tilde{C}(\mu)$ since we are taking the worst case across all possible distributions of initial states and transition probability functions.
 
-Focusing on a given coefficient $\tilde{c}(m, \mu)$, it should be clear that, by considering all possible $\tilde{\rho}$'s, $\tilde{p}$'s and policies ($\pi_1, \ldots, \pi_m$), the set of possible distributions $\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}$ is $\Delta(\mathcal{S})$, for all $m \in \mathbb{N}$. Thus,
+Focusing on a given coefficient $\tilde{c}(m, \mu)$, it should be clear that, by considering all possible $\tilde{\rho}$'s, $\tilde{p}$'s and policies $(\pi_1, \ldots, \pi_m)$, the set of possible distributions $\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}$ is $\Delta(\mathcal{S})$, for all $m \in \mathbb{N}$. Thus,
 
 <div>$$\tilde{c}(m, \mu) = \max_{ \beta \in \Delta(\mathcal{S})} \bigg\lVert \frac{\beta}{\mu} \bigg\rVert_{2,\mu},$$</div>
 
@@ -181,7 +181,9 @@ for all $m \in \mathbb{N}$. Since coefficients $\tilde{c}(m, \mu)$ are now indep
 
 Thus, in this setting, the problem of finding the optimal data distribution becomes 
 
-<div>$$\mu^\star = \argmin_{\mu \in \Delta(\mathcal{S})} \tilde{C}(\mu) = \argmin_{\mu \in \Delta(\mathcal{S})} \max_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta),$$</div>
+<div>$$\begin{align*}
+\mu^\star &= \argmin_{\mu \in \Delta(\mathcal{S})} \tilde{C}(\mu) \\ &= \argmin_{\mu \in \Delta(\mathcal{S})} \max_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta),
+\end{align*}$$</div>
 
 where $L(\mu, \beta) = \lVert \beta / \mu \rVert_{2,\mu}$. Again, we can interpret the problem above as a two-player game where:
 + the minimizing player aims to select $\mu$ so that $L(\mu, \beta)$ is minimized.
