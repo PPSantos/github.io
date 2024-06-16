@@ -121,7 +121,7 @@ If the arguments above do not convince you, for now, simply assume we want to co
 
 ### $C(\mu)$ is a best response of an adversary player to $\mu$
 
-Note that, to compute $C(\mu)$, the set of variables $(\pi_1, \pi_2, \ldots, \pi_m)$ over which the maximization in (2) is performed is different for each $c(m,\mu)$. Thus, let $\Pi_m = (\pi_1^m, \pi_2^m, \ldots, \pi_m^m)$ denote the set of policies that are considered in the optimization of coefficient $c(m, \mu)$. Then, $\Pi = ( \Pi_1, \Pi_2, \Pi_3, \ldots )$ denotes the set of all policies that are considered in the computation of $C(\mu)$.
+Note that a different set of variables $(\pi_1, \pi_2, \ldots, \pi_m)$ is considered in the maximization involved to compute each of the coefficients $c(m, \mu)$. Thus, let $\Pi_m = (\pi_1^m, \pi_2^m, \ldots, \pi_m^m)$ denote the set of policies that are considered in the optimization of coefficient $c(m, \mu)$. Then, $\Pi = ( \Pi_1, \Pi_2, \Pi_3, \ldots )$ denotes the set of all policies that are considered in the computation of $C(\mu)$.
 
 Let also \$\Pi^\star_m = (\pi_1^{m,\star}, \pi_2^{m,\star}, \ldots, \pi_m^{m,\star})\$ denote the set of optimal policies with respect to coefficient $c(m, \mu)$. Then, $\Pi^\star = ( \Pi_1^\star, \Pi_2^\star, \Pi_3^\star, \ldots )$ denotes the set of all maximizing policies with respect to all coefficients $c(m, \mu)$. 
 
@@ -248,9 +248,7 @@ If the underlying MDP is unknown, we showed in the previous section that the max
 
 Thus, one could try to find a policy $\pi^\star$, associated with a given $d_{\pi^\star}$, such that 
 
-\begin{equation*}
-    \pi^\star = \argmin_{\pi} \text{KL}(d_\pi \hspace{0.05cm} \lVert \hspace{0.05cm} \mathcal{U}),
-\end{equation*}
+<div>$$\pi^\star = \argmin_{\pi} \text{KL}(d_\pi \hspace{0.05cm} \lVert \hspace{0.05cm} \mathcal{U}),$$</div>
 
 where $\text{KL}$ denotes the KL-divergence. Essentially, we are projecting our minimax solution, $\mathcal{U}$, onto set $\mathcal{D}$, as we illustrate in the figure below with the dashed line. We denote the result of this projection step with point $d_{\pi^\star}$ in the figure below.
 
