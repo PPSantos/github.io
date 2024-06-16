@@ -94,10 +94,10 @@ for arbitrary $\beta \in \Delta(\mathcal{S})$.
 
 Consider data distribution $\mu$ is fixed. We can interpret $C(\mu)$ as follows:
 
-+ first, note that $\big|\big| \frac{\beta}{\mu} \big|\big|\_{2,\mu}$, as defined in equation (3), increases if $\beta(s)$ is high for states where $\mu(s)$ is small. Intuitively, $\big|\big| \frac{\beta}{\mu} \big|\big|\_{2,\mu}$ is high if $\beta$ puts lots of probability mass in states that have low probability under $\mu$.
-+ second, for fixed $m$ and $(\pi_1, \pi_2, \ldots, \pi_m)$, $\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}$ corresponds to the expected frequency of visitation of states after $m$ steps when the distribution of initial states is $\rho$. Hence, $\big|\big| \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big|\big|\_{2,\mu}$ is high if underrepresented states in $\mu$ are visited with high probability after $m$ steps under policies $(\pi_1, \pi_2, \ldots, \pi_m)$.
-+ third, for a given $m$, we compute $c(m,\mu)$ in equation (2) by searching for a set of policies $(\pi_1, \pi_2, \ldots, \pi_m)$ that maximizes $\big|\big| \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big|\big|\_{2,\mu}$. I.e., we search for a set of policies such that the the induced state distribution in $m$ steps is high for underrepresented states in $\mu$.
-+ finally, $C(\mu)$ in equation (1) corresponds to a weighted sum of coefficients $c(m,\mu)$, where we note that the maximization over policies $(\pi_1, \pi_2, \ldots, \pi_m)$ is performed independently for each $m$.
++ first, note that $\big\lVert \frac{\beta}{\mu} \big\rVert_{2,\mu}$, as defined above for arbitrary $\beta$, increases if $\beta(s)$ is high for states where $\mu(s)$ is small. Intuitively, $\big\lVert \frac{\beta}{\mu} \big\rVert_{2,\mu}$ is high if $\beta$ puts lots of probability mass in states that have low probability under $\mu$.
++ second, for fixed $m$ and $(\pi_1, \pi_2, \ldots, \pi_m)$, $\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}$ corresponds to the expected frequency of visitation of states after $m$ steps when the distribution of initial states is $\rho$ and we follow policies $(\pi_1, \pi_2, \ldots, \pi_m)$. Hence, $\big\lVert \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big\rVert_{2,\mu}$ is high if underrepresented states in $\mu$ are visited with high probability after $m$ steps under policies $(\pi_1, \pi_2, \ldots, \pi_m)$.
++ third, for a given $m$, we compute $c(m,\mu)$ by searching for a set of policies $(\pi_1, \pi_2, \ldots, \pi_m)$ that maximizes $\big\lVert \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big\rVert_{2,\mu}$. I.e., we search for a set of policies such that the induced state distribution in $m$ steps is high for underrepresented states in $\mu$.
++ finally, $C(\mu)$ corresponds to a weighted sum of coefficients $c(m,\mu)$, where we note that the maximization over policies $(\pi_1, \pi_2, \ldots, \pi_m)$ is performed independently for each $m$.
 
 </span>
 
