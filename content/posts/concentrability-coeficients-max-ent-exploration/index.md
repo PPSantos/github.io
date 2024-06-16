@@ -164,41 +164,32 @@ As previously discussed, to compute the optimal data distribution as described b
 
 ## 4) Maximum entropy data distributions are (minimax) optimal in the face of uncertainty regarding the underlying MDP
 
-If we do not know the initial states distribution, $\rho$, and the transition probability function, $p$, we cannot compute coefficients $c(m, \mu)$ as defined in (2). Hence, we introduce coefficients $\tilde{c}(m, \mu)$, which redefine $c(m, \mu)$ by considering the worst case over all possible distributions $\tilde{\rho} \in \Delta(\mathcal{S})$ and transition probability functions $\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|}$. Precisely, let 
+If we do not know the initial states distribution, $\rho$, and the transition probability function, $p$, we cannot compute $C(\mu)$. Hence, we introduce
 
-\begin{equation*}
-\tilde{c}(m, \mu) = \max\_{\tilde{\rho} \in \Delta(\mathcal{S}) } \max\_{\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|} } \max\_{\pi_1, \ldots, \pi_m}  \bigg|\bigg| \frac{\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}}{\mu} \bigg|\bigg|\_{2,\mu},
-\end{equation*}
+<div>$$\tilde{C}(\mu) = (1-\gamma)^2 \sum_{m=0}^\infty m \gamma^{m-1} \tilde{c}(m, \mu)$$</div>
+<div>$$\tilde{c}(m, \mu) = \max_{\tilde{\rho}, \hspace{0.05cm} \tilde{p} } \max_{\pi_1, \ldots, \pi_m}  \bigg\lVert \frac{\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}}{\mu} \bigg\rVert_{2,\mu},$$</div>
 
-where $\tilde{P}^\pi$ denotes the expected transition probability function for policy $\pi$ under an MDP with transition probability function $\tilde{p}$. 
+where the outer maximization in the equation above is performed across all possible distributions $\tilde{\rho} \in \Delta(\mathcal{S})$ and transition probability functions $\tilde{p} \in \Delta(\mathcal{S})^{|\mathcal{S}| |\mathcal{A}|}$, and $\tilde{P}^\pi$ denotes the expected transition probability function for policy $\pi$ under an MDP with transition probability function $\tilde{p}$. As can be seen, one does not need to know $\rho$ nor $p$ to compute $\tilde{C}(\mu)$ since we are taking the worst case across all possible distributions of initial states and transition probability functions.
 
-It should be clear that, by considering all possible $\tilde{\rho}$'s, $\tilde{p}$'s and policies ($\pi_1, \ldots, \pi_m$), the set of possible distributions $\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}$ is $\Delta(\mathcal{S})$, for all $m \in \mathbb{N}$. Thus,
+Focusing on a given coefficient $\tilde{c}(m, \mu)$, it should be clear that, by considering all possible $\tilde{\rho}$'s, $\tilde{p}$'s and policies ($\pi_1, \ldots, \pi_m$), the set of possible distributions $\tilde{\rho} \tilde{P}^{\pi_1} \tilde{P}^{\pi_2} \ldots \tilde{P}^{\pi_m}$ is $\Delta(\mathcal{S})$, for all $m \in \mathbb{N}$. Thus,
 
-\begin{equation*}
-\tilde{c}(m, \mu) = \max\_{ \beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu},
-\end{equation*}
+<div>$$\tilde{c}(m, \mu) = \max_{ \beta \in \Delta(\mathcal{S})} \bigg\lVert \frac{\beta}{\mu} \bigg\rVert_{2,\mu},$$</div>
 
-for all $m \in \mathbb{N}$. If we insert the equation above in (1) it yields 
+for all $m \in \mathbb{N}$. Since coefficients $\tilde{c}(m, \mu)$ are now independent of $m$,
 
-\begin{equation*}
-\tilde{C}(\mu) = \max\_{ \beta \in \Delta(\mathcal{S})} \bigg|\bigg| \frac{\beta}{\mu} \bigg|\bigg|\_{2,\mu},
-\end{equation*}
-
-since coefficients $\tilde{c}(m, \mu)$ are now independent of the summation index $m$.
+<div>$$\tilde{C}(\mu) = \max_{ \beta \in \Delta(\mathcal{S})} \bigg\lVert \frac{\beta}{\mu} \bigg\rVert_{2,\mu}.$$</div>
 
 Thus, in this setting, the problem of finding the optimal data distribution becomes 
 
-\begin{equation*}
-    \mu^* = \argmin\_{\mu \in \Delta(\mathcal{S})} \tilde{C}(\mu) = \argmin\_{\mu \in \Delta(\mathcal{S})} \max\_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta),
-\end{equation*}
+<div>$$\mu^\star = \argmin_{\mu \in \Delta(\mathcal{S})} \tilde{C}(\mu) = \argmin_{\mu \in \Delta(\mathcal{S})} \max_{\beta \in \Delta(\mathcal{S})} L(\mu, \beta),$$</div>
 
-where $L(\mu, \beta) = || \beta / \mu ||\_{2,\mu}$. Again, we can interpret the problem above as a two-player game where:
+where $L(\mu, \beta) = \lVert \beta / \mu \rVert_{2,\mu}$. Again, we can interpret the problem above as a two-player game where:
 + the minimizing player aims to select $\mu$ so that $L(\mu, \beta)$ is minimized.
 + the maximizing (adversary) player aims to select $\beta$ so that $L(\mu, \beta)$ is maximized.
 
-It turns out that the problem above has a closed-form solution and $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$, where $\mathcal{U}\_{|\mathcal{S}|}$ denotes the uniform distribution over $\mathcal{S}$, equivalent to the maximum entropy distribution. The intuition behind such result is that, for any $\mu$ picked by the minimizing player, the best response for the maximizing player, $\beta_\mu^\*$, is to pick $\beta$ such that all probability mass concentrates in the most underrepresented state in $\mu$. When the maximizing player chooses $\beta_\mu^\*$, it yields a value $L(\mu, \beta_\mu^\*)$ to the minimizing player that grows as the probability of the most underrepresented state in $\mu$ decreases. Hence, the optimal strategy for the minimizing player is to pick $\mu = \mathcal{U}\_{|\mathcal{S}|}$. Because of this, we say that the maximum entropy distribution is minimax optimal in the face of uncertainty regarding the underlying MDP.
+It turns out that the problem above has a closed-form solution and $\mu^\star = \mathcal{U}$, where $\mathcal{U}$ denotes the uniform distribution over $\mathcal{S}$, equivalent to the maximum entropy distribution. The intuition behind such result is that, for any $\mu$ picked by the minimizing player, the best response for the maximizing player, $\beta_\mu^\star$, is to pick $\beta$ such that all probability mass concentrates in the most underrepresented state in $\mu$. When the maximizing player chooses $\beta_\mu^\star$, it yields a value $L(\mu, \beta_\mu^\star)$ to the minimizing player that grows as the probability of the most underrepresented state in $\mu$ decreases. Hence, the optimal strategy for the minimizing player is to pick $\mu = \mathcal{U}$. Because of this, we say that the maximum entropy distribution is minimax optimal in the face of uncertainty regarding the underlying MDP.
 
-In the next subsection, we provide a detailed explanation as to why $\mu^\* = \mathcal{U}\_{|\mathcal{S}|}$ for the problem above. If you find such result is intuitive and are in a rush, you can [skip to the next section where we elaborate on how our analysis can extend to the online setting.](#5-from-optimal-offline-distributions-to-exploratory-policies)
+In the next subsection, we provide a detailed explanation as to why $\mu^\star = \mathcal{U}$ for the problem above. If you find such result is intuitive and are in a rush, you can [skip to the next section where we elaborate on how our analysis can extend to the online setting.](#5-from-optimal-offline-distributions-to-exploratory-policies)
 
 ### The maximum entropy distribution is minimax optimal 
 
@@ -275,7 +266,7 @@ If the underlying MDP is unknown, we showed in the previous section that the max
 Thus, one could try to find a policy $\pi^*$, associated with a given $d_{\pi^\*}$, such that 
 
 \begin{equation*}
-    \pi^* = \argmin\_{\pi} \text{KL}(d_\pi \hspace*{0.05cm} || \hspace*{0.05cm} \mathcal{U}\_{|\mathcal{S}|}),
+    \pi^* = \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}\_{|\mathcal{S}|}),
 \end{equation*}
 
 where $\text{KL}$ denotes the KL-divergence. Essentially, we are projecting our minimax solution, $\mathcal{U}\_{|\mathcal{S}|}$, onto set $\mathcal{D}$, as we illustrate in the figure below with the dashed line. We denote the result of this projection step with point $d_{\pi^*}$ in the figure below.
