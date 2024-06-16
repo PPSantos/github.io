@@ -235,7 +235,7 @@ Finally, note that if $\mu = \mathcal{U}$ we have that
 
 For any $\mu' \neq \mathcal{U}$, at least one state $s$ satisfies \$\mu'(s) < 1 / |\mathcal{S}|$, implying that 
 
-<div>$$\Bigg(\max_{s \in \mathcal{S}} \frac{1}{\mu'(s)} \Bigg)^{1/2} > |\mathcal{S}|^{1/2},</div>
+<div>$$\Bigg(\max_{s \in \mathcal{S}} \frac{1}{\mu'(s)} \Bigg)^{1/2} > |\mathcal{S}|^{1/2},$$</div>
 
 and, hence, $\mu^\star = \mathcal{U}$.
 
