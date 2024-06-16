@@ -242,17 +242,17 @@ and, hence, $\mu^\star = \mathcal{U}$.
 
 ## 5) From optimal offline distributions to exploratory policies
 
-As previously discussed, in general, the set of expected frequencies of visitation of states induced by all policies is a subset of $\Delta(\mathcal{S})$ because the agent is restricted by the dynamics of the MDP when interacting with the environment. Let us denote with $\mathcal{D}$ the set of expected frequencies of visitation of states induced by all policies for a given MDP. Also, let $d_\pi \in \mathcal{D}$ denote the expected frequency of visitation of states associated with a given policy $\pi$. It should be clear that, in general, $\mathcal{D} \subset \Delta(\mathcal{S})$, as we illustrate in the figure below for the case of an MDP with $\mathcal{S}=(s_1,s_2,s_3)$.
+As previously discussed, in general, the set of expected frequencies of visitation of states induced by all policies is a subset of $\Delta(\mathcal{S})$ because the agent is restricted by the dynamics of the MDP when interacting with the environment. Let $d_\pi$ denote the expected frequency of visitation of states associated with a given policy $\pi$.[^2] Let also $\mathcal{D}$ denote the set of expected frequencies of visitation of states induced by all policies for a given MDP. It should be clear that, in general, $\mathcal{D} \subset \Delta(\mathcal{S})$, as we illustrate in the figure below for the case of an MDP with $\mathcal{S}=(s_1,s_2,s_3)$.
 
-If the underlying MDP is unknown, we showed in the previous section that the maximum entropy distribution over the state space, $\mathcal{U}\_{|\mathcal{S}|}$, is minimax optimal from the point of view of concentrability. We illustrate such distribution with a star in the figure below. Since, in general, the maximum entropy distribution may not be contained in \$\mathcal{D}\$, our result does not directly extend to the online case because it may not exist a policy that induces a uniform probability of visitation over all states.
+If the underlying MDP is unknown, we showed in the previous section that the maximum entropy distribution over the state space, $\mathcal{U}$, is minimax optimal from the point of view of concentrability. We illustrate such distribution with a star in the figure below. Since, in general, the maximum entropy distribution may not be contained in \$\mathcal{D}\$, our result does not directly extend to the online case because it may not exist a policy that induces a uniform probability of visitation over all states.
 
-Thus, one could try to find a policy $\pi^*$, associated with a given $d_{\pi^\*}$, such that 
+Thus, one could try to find a policy $\pi^\star$, associated with a given $d_{\pi^\star}$, such that 
 
 \begin{equation*}
-    \pi^* = \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}\_{|\mathcal{S}|}),
+    \pi^\star = \argmin_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}),
 \end{equation*}
 
-where $\text{KL}$ denotes the KL-divergence. Essentially, we are projecting our minimax solution, $\mathcal{U}\_{|\mathcal{S}|}$, onto set $\mathcal{D}$, as we illustrate in the figure below with the dashed line. We denote the result of this projection step with point $d_{\pi^*}$ in the figure below.
+where $\text{KL}$ denotes the KL-divergence. Essentially, we are projecting our minimax solution, $\mathcal{U}$, onto set $\mathcal{D}$, as we illustrate in the figure below with the dashed line. We denote the result of this projection step with point $d_{\pi^\star}$ in the figure below.
 
 ---
 
@@ -285,7 +285,7 @@ where $\mathcal{H}(d_\pi)$ denotes the entropy of distribution $d_\pi$. Looking 
  = \mathrlap{ \argmax\_{\pi} \mathcal{H}(d_\pi), }\phantom{ \argmin\_{\pi} \text{KL}(d_\pi \hspace{0.05cm} || \hspace{0.05cm} \mathcal{U}\_{|\mathcal{S}|}) }
 \end{equation*}
 
-where the last objective above is precisely that of maximum entropy state exploration, i.e., finding a policy that induces an expected frequency of visitation of states with the highest entropy possible.[^2]
+where the last objective above is precisely that of maximum entropy state exploration, i.e., finding a policy that induces an expected frequency of visitation of states with the highest entropy possible.
 
 Intuitively, we showed that if we project our minimax solution, $\mathcal{U}\_{|\mathcal{S}|}$, onto the set $\mathcal{D}$, such solution is equivalent to the problem of maximum state entropy exploration [(Hazan, 2018)](https://arxiv.org/pdf/1812.02690). In the figure above, this means that point $d_{\pi^*}$ is both the solution to the projection of the minimax solution onto set $\mathcal{D}$, as explained before, as well as the solution attained by maximum state entropy exploration methods. This motivates the use of maximum state entropy exploration methods when one is uncertain about the underlying MDP.
 
@@ -316,7 +316,7 @@ url={https://doi.org/10.1007/s10994-024-06564-5}
 
 [^1]: The analysis can be equivalently extended to the case where $\mu \in \Delta(\mathcal{S} \times \mathcal{A})$.
 
-[^2]: [TODO] 
+[^2]: Depending on the exact way a given policy $\pi$ is used to interact with the environment, the exact definition of $d_\pi$ may differ. For example, depending on the way one resets, or does not reset at all, the agent back to an initial state during the agent-environment interaction, $d_\pi$ may be defined as an average or discounted expected frequency of visitation of states. Since our results hold regardless of the exact definition of $d_\pi$, as far as $d_\pi$ is a valid probability distribution, we omit such details from the text.
 
 <!---
 Depending on the exact definition of the set $\mathcal{D}$, it may happen that $d_\pi$ does not directly correspond to an expected frequency of visitation of states as policy $\pi$ is deployed to the environment. For example, $\mathcal{D}$ can correspond to the set of all discounted expected frequencies of visitation of states. Nevertheless, our analysis holds irrespectively of the exact definition of the set $\mathcal{D}$].-->
