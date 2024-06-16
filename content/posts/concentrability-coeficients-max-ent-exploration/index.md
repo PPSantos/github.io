@@ -127,9 +127,7 @@ Let also \$\Pi^\star_m = (\pi_1^{m,\star}, \pi_2^{m,\star}, \ldots, \pi_m^{m,\st
 
 Given the above, we can rewrite $C(\mu)$ as
 
-\begin{equation*}
-C(\mu) = \max_{\Pi} C(\mu, \Pi) = C(\mu, \Pi^\star),
-\end{equation*}
+<div>$$C(\mu) = \max_{\Pi} C(\mu, \Pi) = C(\mu, \Pi^\star),$$</div>
 
 where
 + we redefined $C(\mu)$ by making explicit the dependence on the set of policies $\Pi$. 
@@ -142,9 +140,7 @@ As can be seen above, $C(\mu)$ can be interpreted as a best response of an adver
 
 We now formulate the problem of finding the optimal data distribution from the point of view of concentrability as
 
-\begin{equation*}
-    \mu^\star = \argmin\_{\mu \in \Delta(\mathcal{S})} \max_\Pi C(\mu, \Pi).
-\end{equation*}
+<div>$$\mu^\star = \argmin_{\mu \in \Delta(\mathcal{S})} \max_\Pi C(\mu, \Pi).$$</div>
 
 As seen, the problem above can be interpreted as a two-player game where:
 + the minimizing player aims to select $\mu$ so that $C(\mu, \Pi)$ is minimized.
