@@ -4,8 +4,8 @@ date: 2024-06-13
 lastmod: 2024-06-13
 tags: ["reinforcement learning","data distribution","q-learning"]
 author: ["Pedro P. Santos (based in joint work with Diogo S. Carvalho, Alberto Sardinha, and Francisco S. Melo)"]
-description: "We provide an intuitive explanation as to why maximum entropy data distributions are minimax optimal for approximate value-iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods." 
-summary: "We provide an intuitive explanation as to why maximum entropy data distributions are minimax optimal for approximate value-iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods." 
+description: "We provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods." 
+summary: "We provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods." 
 cover:
     image: "blog_post_illustration.png"
     alt: "From concentrability coefficients to maximum state entropy exploration"
@@ -20,7 +20,7 @@ editPost:
 
 ##### Abstract
 
-We provide an intuitive explanation as to why maximum entropy data distributions are minimax optimal for approximate value-iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.
+We provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.
 
 ---
 
@@ -42,16 +42,16 @@ url={https://doi.org/10.1007/s10994-024-06564-5}
 
 ---
 
-##### Note) Notation and setting
+##### Notation and setting
 <span style="color:gray">
-We denote with $\Delta(\mathcal{X})$ the set of probability distributions over set $\mathcal{X}$. We consider a discounted MDP setting $(\mathcal{S}, \mathcal{A}, p, p_0, r, \gamma)$, where $\mathcal{S}$ denotes the discrete state space, $\mathcal{A}$ denotes the discrete action space, $p: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})$ is the state transition probability function , $\rho \in \Delta(\mathcal{S})$ is the initial state distribution, $r: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1)$ is a discount factor. A policy $\pi \in \Delta(\mathcal{A})^{\rvert \mathcal{S}\rvert}$ is a mapping  $\pi: \mathcal{S} \rightarrow \Delta(\mathcal{A})$. We denote with $P^\pi$ the $ \lvert \mathcal{S} \rvert \times \lvert \mathcal{S} \rvert$ matrix with elements $P^\pi(s,s') = \mathbb{E}_{A \sim \pi(\cdot \rvert s)}\left[ p(s' \rvert s, A) \right]$. We let $V^\star$ denote the optimal value function and $Q^\star$ denote the optimal action-value function.
+We denote with $\Delta(\mathcal{X})$ the set of probability distributions over set $\mathcal{X}$. We consider a discounted MDP setting $(\mathcal{S}, \mathcal{A}, p, \rho, r, \gamma)$, where $\mathcal{S}$ denotes the discrete state space, $\mathcal{A}$ denotes the discrete action space, $p: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})$ is the state transition probability function , $\rho \in \Delta(\mathcal{S})$ is the initial state distribution, $r: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1)$ is a discount factor. A policy is a mapping  $\pi: \mathcal{S} \rightarrow \Delta(\mathcal{A})$. We denote with $P^\pi$ the $ \lvert \mathcal{S} \rvert \times \lvert \mathcal{S} \rvert$ matrix with elements $P^\pi(s,s') = \mathbb{E}_{A \sim \pi(\cdot \rvert s)}\left[ p(s' \rvert s, A) \right]$. We let $V^\star$ denote the optimal value function and $Q^\star$ denote the optimal action-value function.
 </span>
 
 ---
 
 ## 1) Approximate value iteration algorithms
 
-Approximate value iteration (AVI) algorithms aim to approximate $V^\star$ or $Q^\star$ using a function $f \in \mathcal{F}$, where $\mathcal{F}$ is the class of functions enconding the representable value or action-value functions. In practice, $\mathcal{F}$ can correspond to the space of functions induced by linear approximators or neural networks. Several well-known reinforcement learning (RL) algorithms such as fitted Q-iteration or deep $Q$-network can be seen as particular instances of AVI algorithms.
+Approximate value iteration (AVI) algorithms aim to approximate $V^\star$ or $Q^\star$ using a function $f \in \mathcal{F}$, where $\mathcal{F}$ is some family of value or action-value functions. In practice, $\mathcal{F}$ can correspond to the space of functions induced by linear approximators or neural networks. Several well-known reinforcement learning (RL) algorithms such as fitted Q-iteration or deep $Q$-network can be seen as particular instances of AVI algorithms.
 
 Below, we provide a very simplified pseudocode for an AVI algorithm, where we ommited the details regarding the update of the function approximator since they are irrelevant for our discussion.
 
@@ -63,7 +63,7 @@ Below, we provide a very simplified pseudocode for an AVI algorithm, where we om
 
 ---
 
-As can be seen, at each iteration, a dataset of $M$ state action pairs is sampled from data distribution $\mu \in \Delta(\mathcal{S} \times \mathcal{A})$, a probability distribution over the state-action space. Then, the samples are used to update $f_n$ to produce the next approximator $f_{n+1}$. The algorithm returns approximator $f_N$, which we hope to well-approximate $V^\star$ or $Q^\star$.
+As can be seen, at each iteration, a dataset of $M$ state action pairs is sampled from data distribution $\mu \in \Delta(\mathcal{S} \times \mathcal{A})$, a probability distribution over the state-action space. Then, the samples are used to update $f_n$ to produce the next approximator $f_{n+1}$. The algorithm returns approximator $f_N$, which we hope provides an accurate approximation of $V^\star$ or $Q^\star$.
 
 We focus our attention on the impact of data distribution $\mu$ on the quality of our function approximator $f_N$, i.e., how well $f_N$ approximates $V^\star$ or $Q^\star$. We note that $\mu$ can correspond:
 + in the online RL setting, to the empirical frequency of visitation of state action pairs induced by a given policy (e.g., when data is generated by a given fixed behavior policy) or multiple policies (e.g., when a replay buffer is used). Under the online RL setting $\mu$ usually changes across iterations as the agent is able to control, up to some extent, the data generation process. 
@@ -75,13 +75,15 @@ We focus our attention on the impact of data distribution $\mu$ on the quality o
 
 Concentrability coefficients aim to quantify the suitability of a given fixed data distribution $\mu$ under the offline/batch RL setting by studying error propagation in AVI algorithms. To put it in simple terms, concentrability coefficients are used to upper bound the error between $f_N$ and $V^\star$ or $Q^\star$ as $N \rightarrow \infty$. Thus, the lower the concentrability coefficient for a given data distribution $\mu$, the tighter the upper bound on the error.
 
-We consider the case where $\mu \in \Delta(\mathcal{S})$[^1], i.e., $\mu$ is a distribution over the state space $\mathcal{S}$. While there are several concentrability coefficients proposed in the literature, we focus our attention on the following [(Farahmand, 2010)](https://proceedings.neurips.cc/paper_files/paper/2010/file/65cc2c8205a05d7379fa3a6386f710e1-Paper.pdf)
+We focus our discussion to the case where we are approximating $V^\star$. In this case, the data distribution verifies $\mu \in \Delta(\mathcal{S})$[^1], i.e., $\mu$ is a distribution over the state space $\mathcal{S}$. While there are several concentrability coefficients proposed in the literature, we focus our attention on the following [(Farahmand, 2010)](https://proceedings.neurips.cc/paper_files/paper/2010/file/65cc2c8205a05d7379fa3a6386f710e1-Paper.pdf)
 
-<div>$$C(\mu) = (1-\gamma)^2 \sum_{m=0}^\infty m \gamma^{m-1} c(m, \mu)$$</div>
+<div>$$C(\mu) = (1-\gamma)^2 \sum_{m=0}^\infty m \gamma^{m-1} c(m, \mu),$$</div>
+
+where
 
 <div>$$c(m, \mu) = \max_{\pi_1, \ldots, \pi_m} \bigg\lVert \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_{m}}}{\mu} \bigg\rVert_{2,\mu},$$</div>
 
-where $\gamma \in [0,1)$ is the discount factor, $\rho \in \Delta(\mathcal{S})$ is the distribution of initial states, $P^\pi$ denotes the expected transition probability function given policy $\pi$, and
+$\gamma \in [0,1)$ is the discount factor, $\rho \in \Delta(\mathcal{S})$ is the distribution of initial states, and
 
 <div>$$\bigg\lVert \frac{\beta}{\mu} \bigg\lVert_{2,\mu} = \Bigg( \sum_{s \in \mathcal{S}} \mu(s) \big( \beta(s) / \mu(s) \big)^2 \Bigg)^{1/2},$$</div>
 
@@ -89,13 +91,13 @@ for arbitrary $\beta \in \Delta(\mathcal{S})$.
 
 ---
 
-##### Note) Taking a closer look at the concentrability coefficient
+##### Taking a closer look at the concentrability coefficient
 <span style="color:gray">
 
 Consider data distribution $\mu$ is fixed. We can interpret $C(\mu)$ as follows:
 
 + first, note that $\big\lVert \frac{\beta}{\mu} \big\rVert_{2,\mu}$, as defined above for arbitrary $\beta$, increases if $\beta(s)$ is high for states where $\mu(s)$ is small. Intuitively, $\big\lVert \frac{\beta}{\mu} \big\rVert_{2,\mu}$ is high if $\beta$ puts lots of probability mass in states that have low probability under $\mu$.
-+ second, for fixed $m$ and $(\pi_1, \pi_2, \ldots, \pi_m)$, $\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}$ corresponds to the expected frequency of visitation of states after $m$ steps when the distribution of initial states is $\rho$ and we follow policies $(\pi_1, \pi_2, \ldots, \pi_m)$. Hence, $\big\lVert \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big\rVert_{2,\mu}$ is high if underrepresented states in $\mu$ are visited with high probability after $m$ steps under policies $(\pi_1, \pi_2, \ldots, \pi_m)$.
++ second, for fixed $m$ and $(\pi_1, \pi_2, \ldots, \pi_m)$, $\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}$ corresponds to the expected frequency of visitation of states after $m$ steps when the distribution of initial states is $\rho$ and  the agent follows policies $(\pi_1, \pi_2, \ldots, \pi_m)$ at time steps $t=1, 2, \ldots, m$, respectively. Hence, $\big\lVert \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big\rVert_{2,\mu}$ is high if underrepresented states in $\mu$ are visited with high probability after $m$ steps under policies $(\pi_1, \pi_2, \ldots, \pi_m)$.
 + third, for a given $m$, we compute $c(m,\mu)$ by searching for a set of policies $(\pi_1, \pi_2, \ldots, \pi_m)$ that maximizes $\big\lVert \frac{\rho P^{\pi_1} P^{\pi_2} \ldots P^{\pi_m}}{\mu} \big\rVert_{2,\mu}$. I.e., we search for a set of policies such that the induced state distribution in $m$ steps is high for underrepresented states in $\mu$.
 + finally, $C(\mu)$ corresponds to a weighted sum of coefficients $c(m,\mu)$, where we note that the maximization over policies $(\pi_1, \pi_2, \ldots, \pi_m)$ is performed independently for each $m$.
 
@@ -121,9 +123,9 @@ If the arguments above do not convince you, for now, simply assume we want to co
 
 ### $C(\mu)$ is a best response of an adversary player to $\mu$
 
-Note that a different set of variables $(\pi_1, \pi_2, \ldots, \pi_m)$ is considered in the maximization involved to compute each of the coefficients $c(m, \mu)$. Thus, let $\Pi_m = (\pi_1^m, \pi_2^m, \ldots, \pi_m^m)$ denote the set of policies that are considered in the optimization of coefficient $c(m, \mu)$. Then, $\Pi = ( \Pi_1, \Pi_2, \Pi_3, \ldots )$ denotes the set of all policies that are considered in the computation of $C(\mu)$.
+Note that a different set of variables $(\pi_1, \pi_2, \ldots, \pi_m)$ is considered in the maximization to compute each of the coefficients $c(m, \mu)$. Thus, let $\Pi_m = (\pi_1^m, \pi_2^m, \ldots, \pi_m^m)$ denote the set of policies that are considered in the maximization to compute coefficient $c(m, \mu)$. Then, $\Pi = ( \Pi_1, \Pi_2, \Pi_3, \ldots )$ denotes the set of all policies that are considered in the computation of $C(\mu)$.
 
-Let also \$\Pi^\star_m = (\pi_1^{m,\star}, \pi_2^{m,\star}, \ldots, \pi_m^{m,\star})\$ denote the set of optimal policies with respect to coefficient $c(m, \mu)$. Then, $\Pi^\star = ( \Pi_1^\star, \Pi_2^\star, \Pi_3^\star, \ldots )$ denotes the set of all maximizing policies with respect to all coefficients $c(m, \mu)$. 
+Let also \$\Pi^\star_m = (\pi_1^{m,\star}, \pi_2^{m,\star}, \ldots, \pi_m^{m,\star})\$ denote the set of optimal policies involved in computing coefficient $c(m, \mu)$. Then, $\Pi^\star = ( \Pi_1^\star, \Pi_2^\star, \Pi_3^\star, \ldots )$ denotes the set of all maximizing policies associated with the computation of all coefficients $c(m, \mu)$. 
 
 Given the above, we can rewrite $C(\mu)$ as
 
@@ -150,7 +152,7 @@ The intuition behind the two-player game above is as follows: first, the minimiz
 
 ---
 
-#### Note) Computing the optimal data distribution
+#### Computing the optimal data distribution
 
 <span style="color:gray">
 We refer to Sec. 3.2 of our article where we propose a gradient descent-based algorithm to solve the two-player game above. In summary, we exploit the fact that $\max_\Pi C(\mu, \Pi)$ is convex with respect to $\mu$ and employ a gradient descent-based update scheme that, combined with a projection step to keep iterates $\mu_t$ inside the probability simplex, iteratively updates $\mu_t$ such that we approximate $\mu^\star$.
@@ -205,7 +207,7 @@ where in (a) we rewrote the weighted norm as the square root of a quadratic form
 
 ---
 
-#### Note) Bauer's maximum principle
+#### Bauer's maximum principle
 
 <span style="color:gray">
 Any function that is convex and continuous, and defined on a set that is convex and compact, attains its maximum at some extreme point of that set.
@@ -282,7 +284,7 @@ Intuitively, we showed that if we project our minimax solution, $\mathcal{U}$, o
 
 ##### Acknowledgments
 
-Pedro P. Santos thanks Prof. João Xavier for the feedback provided during the project of the non-linear optimization course at IST, which addressed some of the topics covered in this blog post.
+Pedro P. Santos thanks Francisco Melo, Diogo Carvalho and Jacopo Silvestrin for comments provided on an early version of this blog post. Pedro P. Santos thanks Prof. João Xavier for the feedback provided during the project of the non-linear optimization course at IST, which addressed some of the topics covered in this blog post.
 
 ---
 

@@ -12,7 +12,7 @@
       <pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>https://ppsantos.github.io/posts/concentrability-coeficients-max-ent-exploration/</guid>
-      <description>We provide an intuitive explanation as to why maximum entropy data distributions are minimax optimal for approximate value-iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.</description>
+      <description>We provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.</description>
     </item>
     
     <item>
