@@ -20,7 +20,7 @@ editPost:
 
 ##### Abstract
 
-We provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process (MDP). We also investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.
+We focus our attention on the study of the impact of the data distribution in the performance of approximate value iteration (AVI) algorithms. First, we briefly review concentrability coefficients, which aim to quantify the suitability of a given data distribution for AVI-based algorithms. We also show that the problem of computing the optimal data distribution from the point of view of concentrability can be interpreted as a two-player game. Second, we provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process. Third, we investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.
 
 ---
 
@@ -44,7 +44,7 @@ url={https://doi.org/10.1007/s10994-024-06564-5}
 
 ##### Notation and setting
 <span style="color:gray">
-We denote with $\Delta(\mathcal{X})$ the set of probability distributions over set $\mathcal{X}$. We consider a discounted MDP setting $(\mathcal{S}, \mathcal{A}, p, \rho, r, \gamma)$, where $\mathcal{S}$ denotes the discrete state space, $\mathcal{A}$ denotes the discrete action space, $p: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})$ is the state transition probability function , $\rho \in \Delta(\mathcal{S})$ is the initial state distribution, $r: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1)$ is a discount factor. A policy is a mapping  $\pi: \mathcal{S} \rightarrow \Delta(\mathcal{A})$. We denote with $P^\pi$ the $ \lvert \mathcal{S} \rvert \times \lvert \mathcal{S} \rvert$ matrix with elements $P^\pi(s,s') = \mathbb{E}_{A \sim \pi(\cdot \rvert s)}\left[ p(s' \rvert s, A) \right]$. We let $V^\star$ denote the optimal value function and $Q^\star$ denote the optimal action-value function.
+We denote with $\Delta(\mathcal{X})$ the set of probability distributions over set $\mathcal{X}$. We consider a discounted Markov decision process (MDP) setting $(\mathcal{S}, \mathcal{A}, p, \rho, r, \gamma)$, where $\mathcal{S}$ denotes the discrete state space, $\mathcal{A}$ denotes the discrete action space, $p: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})$ is the state transition probability function , $\rho \in \Delta(\mathcal{S})$ is the initial state distribution, $r: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1)$ is a discount factor. A policy is a mapping  $\pi: \mathcal{S} \rightarrow \Delta(\mathcal{A})$. We denote with $P^\pi$ the $ \lvert \mathcal{S} \rvert \times \lvert \mathcal{S} \rvert$ matrix with elements $P^\pi(s,s') = \mathbb{E}_{A \sim \pi(\cdot \rvert s)}\left[ p(s' \rvert s, A) \right]$. We let $V^\star$ denote the optimal value function and $Q^\star$ denote the optimal action-value function.
 </span>
 
 ---
@@ -241,6 +241,7 @@ For any $\mu' \neq \mathcal{U}$, at least one state $s$ satisfies \$\mu'(s) < 1 
 
 and, hence, $\mu^\star = \mathcal{U}$.
 
+---
 
 ## 5) From optimal offline distributions to exploratory policies
 
@@ -279,6 +280,15 @@ where $\mathcal{H}(d_\pi)$ denotes the entropy of distribution $d_\pi$. Looking 
 where the last objective above is precisely that of maximum entropy state exploration, i.e., finding a policy that induces an expected frequency of visitation of states with the highest entropy possible.
 
 Intuitively, we showed that if we project our minimax solution, $\mathcal{U}$, onto the set $\mathcal{D}$, such solution is equivalent to the problem of maximum state entropy exploration [(Hazan, 2018)](https://arxiv.org/pdf/1812.02690). In the figure above, this means that point $d_{\pi^\star}$ is both the solution to the projection of the minimax solution onto set $\mathcal{D}$, as explained before, as well as the solution attained by maximum state entropy exploration methods. This motivates the use of maximum state entropy exploration methods when one is uncertain about the underlying MDP.
+
+---
+
+## 6) Conclusion \& takeaways
+
+In this blog post, we started by reviewing AVI-based algorithms, as well as concentrability coefficients that aim to quantify the suitability of a given data distribution in an offline learning setting. We then
++ showed how the problem of computing the optimal data distribution from the point of view of concentrability can be formulated as a two-player game.
++ showed that, in the face of uncertainty regarding the underlying MDP, maximum entropy data distributions are (minimax) optimal.
++ discussed how our results can extend to the online setting and highlighted connections between our minimax optimal data distribution and the data distributions induced by maximum entropy exploration methods.
 
 ---
 
