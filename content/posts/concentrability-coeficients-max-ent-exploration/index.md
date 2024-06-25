@@ -20,7 +20,7 @@ editPost:
 
 ##### Abstract
 
-We focus our attention on the study of the impact of the data distribution in the performance of approximate value iteration (AVI) algorithms. First, we briefly review concentrability coefficients, which aim to quantify the suitability of a given data distribution for AVI-based algorithms. We also show that the problem of computing the optimal data distribution from the point of view of concentrability can be interpreted as a two-player game. Second, we provide an explanation as to why maximum entropy data distributions are minimax optimal for approximate value iteration algorithms in the face of uncertainty regarding the underlying Markov decision process. Third, we investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.
+We focus our attention on the study of the impact of the data distribution in the performance of approximate value iteration (AVI) algorithms. First, we briefly review concentrability coefficients, which aim to quantify the suitability of a given data distribution for AVI-based algorithms. We also show that the problem of computing the optimal data distribution from the point of view of concentrability can be interpreted as a two-player game. Second, we provide an explanation as to why maximum entropy data distributions are minimax optimal for AVI algorithms in the face of uncertainty regarding the underlying Markov decision process. Third, we investigate connections between such minimax optimal solutions and maximum state entropy exploration methods.
 
 ---
 
@@ -317,4 +317,4 @@ url={https://doi.org/10.1007/s10994-024-06564-5}
 
 [^1]: The analysis can be equivalently extended to the case where $\mu \in \Delta(\mathcal{S} \times \mathcal{A})$.
 
-[^2]: Depending on the exact way a given policy $\pi$ is used to interact with the environment, the definition of $d_\pi$ may differ. For example, depending on the way one resets, or does not reset at all, the agent back to an initial state during the agent-environment interaction $d_\pi$ may be defined as an average or discounted expected frequency of visitation of states. Since our results hold regardless of the exact definition of $d_\pi$, as far as $d_\pi$ is a valid probability distribution, we omit such details from the text.
+[^2]: As an example, $d_\pi$ may be defined as an average or discounted expected frequency of visitation of states. However, since our results hold regardless of the exact definition of $d_\pi$, as far as $d_\pi$ is a valid probability distribution, we omit such details from the text. We also note that, depending on how $d_\pi$ is defined, the way one uses policy $\pi$ to collect a dataset of transitions differs (e.g., the way one resets, or does not reset at all, the agent back to an initial state during the agent-environment interaction may depend on whether $d_\pi$ is defined as an average or discounted expected frequency of visitation of states).
